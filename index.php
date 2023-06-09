@@ -54,73 +54,55 @@
     </a>
   </div>
 
-  <!-- Product Filter Sidebar -->
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action">Category 1</a>
-          <a href="#" class="list-group-item list-group-item-action">Category 2</a>
-          <a href="#" class="list-group-item list-group-item-action">Category 3</a>
-          <a href="#" class="list-group-item list-group-item-action">Category 4</a>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <h2>Product Listing</h2>
-        <div class="row">
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <img src="product1.jpg" class="card-img-top" alt="Product 1">
-              <div class="card-body">
-                <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Description of Product 1</p>
-                <p class="card-text">$99.99</p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <img src="product2.jpg" class="card-img-top" alt="Product 2">
-              <div class="card-body">
-                <h5 class="card-title">Product 2</h5>
-                <p class="card-text">Description of Product 2</p>
-                <p class="card-text">$49.99</p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <img src="product3.jpg" class="card-img-top" alt="Product 3">
-              <div class="card-body">
-                <h5 class="card-title">Product 3</h5>
-                <p class="card-text">Description of Product 3</p>
-                <p class="card-text">$79.99</p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <!-- Add more product cards here -->
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php
+// Include the file with the database connection code
+include 'db_connection.php';
 
-  <!-- Product Details Page -->
-  <div class="container mt-4">
+// Fetch products from the database
+$sql = "SELECT * FROM products";
+$result = mysqli_query($conn, $sql);
+
+// Check if the query was successful
+if ($result && mysqli_num_rows($result) > 0) {
+    // Initialize the $products array
+    $products = array();
+
+    // Fetch each row from the result set and add it to the $products array
+    while ($row = mysqli_fetch_assoc($result)) {
+        $products[] = $row;
+    }
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
+
+<!-- Display the products on the webpage -->
+<div class="container">
+    <h2>Product Listing</h2>
     <div class="row">
-      <div class="col-md-6">
-        <img src="product1.jpg" class="img-fluid" alt="Product 1">
-      </div>
-      <div class="col-md-6">
-        <h2>Product 1</h2>
-        <p>Description of Product 1</p>
-        <p>Price: $99.99</p>
-        <button class="btn btn-primary">Add to Cart</button>
-      </div>
+        <?php if (!empty($products)) : ?>
+            <?php foreach ($products as $product) : ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="<?php echo $product['image']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $product['name']; ?></h5>
+                            <p class="card-text"><?php echo $product['description']; ?></p>
+                            <p class="card-text">$<?php echo $product['price']; ?></p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>No products found.</p>
+        <?php endif; ?>
     </div>
-  </div>
+</div>
+
+
+  
 
   
 
