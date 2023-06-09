@@ -7,33 +7,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">E-commerce</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categories</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cart</a>
-        </li>
-      </ul>
-    </div>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </nav>
+  <?php
+    include('header.php');
+  ?>
 
   <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -146,51 +122,11 @@
     </div>
   </div>
 
-  <!-- Shopping Cart Page -->
-  <div class="container mt-4">
-    <h2>Shopping Cart</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Product 1</td>
-          <td>$99.99</td>
-          <td>2</td>
-          <td>$199.98</td>
-          <td><a href="#" class="btn btn-danger">Remove</a></td>
-        </tr>
-        <tr>
-          <td>Product 2</td>
-          <td>$49.99</td>
-          <td>1</td>
-          <td>$49.99</td>
-          <td><a href="#" class="btn btn-danger">Remove</a></td>
-        </tr>
-        <!-- Add more cart items here -->
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3"></td>
-          <td><strong>Total:</strong></td>
-          <td>$249.97</td>
-        </tr>
-      </tfoot>
-    </table>
-    <a href="#" class="btn btn-primary">Proceed to Checkout</a>
-  </div>
+  
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-4">
-    <p>© 2023 Your E-commerce Website. All rights reserved.</p>
-  </footer>
+<?php
+include('footer.php');
+?>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
